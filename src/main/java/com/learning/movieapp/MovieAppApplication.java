@@ -24,10 +24,10 @@ public class MovieAppApplication {
     CommandLineRunner commandLineRunner(MovieRepository movieRepository, MongoTemplate mongoTemplate){
         return args -> {
             Movie movie = new Movie(
-                    "Avengers EndGame",
-                    "SuperHero",
+                    "Tokyo Drift",
+                    "Action",
                     "PG-13",
-                    2019L
+                    2016L
             );
 
 //            usingMongoTempAndQueries(movieRepository, mongoTemplate, movie);

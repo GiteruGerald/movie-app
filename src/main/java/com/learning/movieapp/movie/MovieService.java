@@ -23,4 +23,14 @@ public class MovieService {
     public Optional<Movie> getMovieById(String id) {
         return movieRepository.findMovieById(id);
     }
+
+    public void addNewMovie(Movie movie) {
+        Optional<Movie> movieOptional =movieRepository.findMovieByName(movie.getName());
+        movieOptional.ifPresentOrElse(s->{
+            throw new IllegalStateException(movie.getName()+" already inserted");
+        },()->{
+            System.out.println("Inserting new movie... "+movie.getName());
+            movieRepository.insert(movie);
+        });
+    }
 }

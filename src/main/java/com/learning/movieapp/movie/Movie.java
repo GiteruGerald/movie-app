@@ -11,11 +11,10 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Document("movies")
 public class Movie {
-
+//TODO: Why ID only works for String data type, not(Long, int)
     @Id
     private String id;
     private String name;
