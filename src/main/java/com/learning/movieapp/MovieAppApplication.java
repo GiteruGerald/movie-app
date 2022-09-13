@@ -33,12 +33,14 @@ public class MovieAppApplication {
 //            usingMongoTempAndQueries(movieRepository, mongoTemplate, movie);
 
 //            Cleaner code
-//            movieRepository.findMovieById(movie.getId())
-//                    .ifPresentOrElse(s->{
-//                        throw new IllegalStateException("Movie already inserted " + movie.getName());
-//                    },()->{
-//                        System.out.println("Inserting... "+movie.getName());
-//                        movieRepository.insert(movie);
+////            movieRepository.findMovieByName(movie.getName())
+////                    .ifPresentOrElse(s->{
+////                        throw new IllegalStateException("Movie already inserted " + movie.getName());
+////                    },()->{
+////                        System.out.println("Inserting... "+movie.getName());
+////                        movieRepository.insert(movie);
+////                        System.out.println(movie.getName()+" Added   ");
+////
 //                    });
         };
     }

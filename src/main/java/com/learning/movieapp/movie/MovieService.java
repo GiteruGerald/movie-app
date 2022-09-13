@@ -24,7 +24,7 @@ public class MovieService {
         return movieRepository.findMovieById(id);
     }
 
-    public void addNewMovie(Movie movie) {
+    public Movie addNewMovie(Movie movie) {
         Optional<Movie> movieOptional =movieRepository.findMovieByName(movie.getName());
         movieOptional.ifPresentOrElse(s->{
             throw new IllegalStateException(movie.getName()+" already inserted");
@@ -32,5 +32,31 @@ public class MovieService {
             System.out.println("Inserting new movie... "+movie.getName());
             movieRepository.insert(movie);
         });
+        return movie;
+    }
+
+    public void updateMovie(String id,
+//                            String name,
+//                            Long releaseYear
+                            Movie movie
+    ) {
+        Movie movieFromRepo = movieRepository.findMovieById(id)
+                .orElseThrow(()-> new IllegalStateException(
+                        "Movie with id "+id+" does not exist"
+                ));
+//        if(name !=null && name.length()>0 && !Objects.equals(movieFromRepo.getName(), name)){
+//            movieFromRepo.setName(name);
+//        }
+//        if(releaseYear !=null && releaseYear>0){
+//            movieFromRepo.setReleaseYear(releaseYear);
+//        }
+
+        movie.setId(movieFromRepo.getId());
+        movieRepository.insert(movie);
+    }
+
+    public void removeMovie(String movieId) {
+        Optional<Movie> movie = movieRepository.findMovieById(movieId);
+        movieRepository.deleteById(movieId);
     }
 }
